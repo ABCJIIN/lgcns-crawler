@@ -1,13 +1,890 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LG CNS</title>
 
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/font.css">
+    <link rel="stylesheet" href="./assets/css/common.css">
     <script src="./assets/js/vendor/jquery-3.7.1.min.js"></script>
+
 </head>
+
 <body>
-    
+    <div class="audit-wrap">
+        <aside class="audit-lnb">
+            <h1 class="lnb-logo">Audit</h1>
+            <div class="lnb-block">
+                <p class="lnb-label">프로젝트</p>
+                <p class="lnb-project">TV</p>
+            </div>
+            <nav class="lnb-nav" aria-label="Audit 메뉴">
+                <p class="lnb-label">메뉴</p>
+                <ul class="lnb-list">
+                    <li><a href="#audit" class="lnb-link is-active" data-page="audit">진단하기</a></li>
+                    <li><a href="#report" class="lnb-link" data-page="report">리포트</a></li>
+                    <li><a href="#history" class="lnb-link" data-page="history">내역</a></li>
+                    <li><a href="#setting" class="lnb-link" data-page="setting">설정</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="audit-main">
+            <section class="page-panel is-active" data-page-panel="audit">
+
+                <h2 class="page-title">진단하기</h2>
+
+                <div class="audit-card upload-ready" data-upload="main">
+                    <div class="card-head">
+                        <h3 class="card-title">서비스 진단</h3>
+                        <p class="card-desc">URL이 포함된 엑셀 파일을 업로드하세요.</p>
+                    </div>
+
+                    <div class="upload-box" tabindex="0" role="button" aria-label="엑셀 파일 업로드 영역">
+                        <div class="upload-info">
+                            <span class="file-icon" aria-hidden="true">Xlsx</span>
+                            <div class="upload-text">
+                                <strong>파일을 직접 선택하세요</strong>
+                                <span>지원형식 : Xlsx, Xls</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-line upload-trigger">파일선택</button>
+                        <input type="file" class="upload-input" accept=".xlsx,.xls" aria-label="엑셀 파일 선택">
+                    </div>
+                    <!-- <p class="upload-msg" aria-live="polite"></p> -->
+                </div>
+
+                <div class="audit-card crawl-card" data-state="progress">
+                    <div class="card-head">
+                        <h3 class="card-title">서비스 진단</h3>
+                        <p class="card-desc">업로드한 엑셀 파일을 기준으로 크롤링을 진행하고 있습니다.</p>
+                    </div>
+                    <div class="file-panel">
+                        <div class="file-info">
+                            <span class="file-icon is-dark" aria-hidden="true">Xlsx</span>
+                            <div class="file-text">
+                                <strong class="file-name">YYYY년 MM월 Monthly Audit 제품A_20260508.Xlsx</strong>
+                                <span>URL 1000건 · 2026년 05월 29일 요청 · <b>진단중</b></span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-line crawl-cancel">취소</button>
+                    </div>
+                </div>
+
+                <div class="audit-card crawl-card" data-state="done">
+                    <div class="card-head">
+                        <h3 class="card-title">서비스 진단</h3>
+                        <p class="card-desc">크롤링이 완료 되었습니다. 결과 파일을 다운로드하거나 운영 진단을 진행하세요.</p>
+                    </div>
+                    <div class="file-panel">
+                        <div class="file-info">
+                            <span class="file-icon is-dark" aria-hidden="true">Xlsx</span>
+                            <div class="file-text">
+                                <strong class="file-name">YYYY년 MM월 Monthly Audit 제품A_20260508.Xlsx</strong>
+                                <span>URL 1000건 · 2026년 05월 29일 · <b>완료</b></span>
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button type="button" class="btn btn-line">엑셀파일 다운로드</button>
+                            <button type="button" class="btn btn-line open-modal">운영 진단하기</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="page-panel" data-page-panel="report">
+
+                <div class="report-sticky">
+                    <h2 class="page-title">리포트</h2>
+                    <div class="report-actions">
+                        <div class="custom-select" data-select>
+                            <button type="button" class="select-btn" aria-haspopup="listbox" aria-expanded="false">
+                                <span class="select-value">5월</span>
+                                <span class="select-ico" aria-hidden="true"></span>
+                            </button>
+                            <ul class="select-list" role="listbox" tabindex="-1">
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="1월">1월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="2월">2월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="3월">3월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="4월">4월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="true" data-value="5월">5월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="6월">6월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="7월">7월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="8월">8월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="9월">9월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="10월">10월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="11월">11월</button>
+                                </li>
+                                <li>
+                                    <button type="button" role="option" aria-selected="false" data-value="12월">12월</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-line download-btn">
+                            <span class="down-ico" aria-hidden="true"></span>엑셀파일 다운로드
+                        </button>
+                    </div>
+                </div>
+                
+                <dl class="file-meta">
+                    <div>
+                        <dt>기준파일 :</dt>
+                        <dd>YYYY년 MM월 Monthly Audit 제품A_리포트.xlsx <button type="button">파일변경하기</button></dd>
+                    </div>
+                    <div>
+                        <dt>진단파일 :</dt>
+                        <dd>YYYY년 MM월 Monthly Audit 제품A_리포트_개선안.xlsx <button type="button">재진단하기</button></dd>
+                    </div>
+                </dl>
+
+                <div class="summary-card">
+                    <div class="section-title">
+                        <h3>개선율</h3>
+                        <span>메타데이터 · H1 Tag · 구조화 데이터</span>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="data-table summary-table">
+                            <caption>개선율 요약</caption>
+                            <colgroup>
+                                <col style="width: 100px;">
+                                <col span="9">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">구분</th>
+                                    <th scope="col">Sitemap.xml</th>
+                                    <th scope="col">GSC Indexing</th>
+                                    <th scope="col">Canonical Status</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">FAQPage Schema</th>
+                                    <th scope="col">Article Schema</th>
+                                    <th scope="col">Image alt txt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">합계</th>
+                                    <td>85.6%</td>
+                                    <td>85.6%</td>
+                                    <td>85.6%</td>
+                                    <td>85.6%</td>
+                                    <td>85.6%</td>
+                                    <td>85.6%</td>
+                                    <td>85.6%</td>
+                                    <td>85.6%</td>
+                                    <td>85.6%</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">진척률</th>
+                                    <td class="txt-red">99.6%</td>
+                                    <td class="txt-red">99.6%</td>
+                                    <td class="txt-red">99.6%</td>
+                                    <td class="txt-red">99.6%</td>
+                                    <td class="txt-red">99.6%</td>
+                                    <td class="txt-red">99.6%</td>
+                                    <td class="txt-red">99.6%</td>
+                                    <td class="txt-red">99.6%</td>
+                                    <td class="txt-red">99.6%</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">개선율</th>
+                                    <td class="txt-green">99.6%</td>
+                                    <td class="txt-green">99.6%</td>
+                                    <td class="txt-green">99.6%</td>
+                                    <td class="txt-green">99.6%</td>
+                                    <td class="txt-green">99.6%</td>
+                                    <td class="txt-green">99.6%</td>
+                                    <td class="txt-green">99.6%</td>
+                                    <td class="txt-green">99.6%</td>
+                                    <td class="txt-green">99.6%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="report-body">
+                    <section class="report-section">
+                        <div class="section-title">
+                            <h3>메타데이터</h3>
+                            <span>Sitemap · GSC Indexing · Canonical · Title · Description</span>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table detail-table">
+                                <caption>메타데이터 현황</caption>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" scope="col">Country</th>
+                                        <th colspan="3" scope="colgroup">Sitemap.xml</th>
+                                        <th colspan="3" scope="colgroup">GSC Indexing</th>
+                                        <th colspan="3" scope="colgroup">Canonical Status</th>
+                                        <th colspan="3" scope="colgroup">Title</th>
+                                        <th colspan="3" scope="colgroup">Description</th>
+                                    </tr>
+                                    <tr class="table-head-sub">
+                                        <th>O</th>
+                                        <th>X</th>
+                                        <th>진척률</th>
+                                        <th>O</th>
+                                        <th>X</th>
+                                        <th>진척률</th>
+                                        <th>O</th>
+                                        <th>X</th>
+                                        <th>진척률</th>
+                                        <th>O</th>
+                                        <th>X</th>
+                                        <th>진척률</th>
+                                        <th>O</th>
+                                        <th>X</th>
+                                        <th>진척률</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">AP</th>
+                                        <td>155</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>155</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>155</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>82</td>
+                                        <td>73</td>
+                                        <td><b>52.9%</b></td>
+                                        <td>141</td>
+                                        <td>14</td>
+                                        <td><b>91.0%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">DG</th>
+                                        <td>241</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>232</td>
+                                        <td>9</td>
+                                        <td><b>96.3%</b></td>
+                                        <td>241</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>217</td>
+                                        <td>24</td>
+                                        <td><b>90.0%</b></td>
+                                        <td>231</td>
+                                        <td>10</td>
+                                        <td><b>95.9%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">MX</th>
+                                        <td>203</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>203</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>203</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>203</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>183</td>
+                                        <td>20</td>
+                                        <td><b>90.1%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">UK</th>
+                                        <td>308</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>308</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>308</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>269</td>
+                                        <td>39</td>
+                                        <td><b>87.3%</b></td>
+                                        <td>291</td>
+                                        <td>17</td>
+                                        <td><b>94.5%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">US</th>
+                                        <td>66</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>66</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>66</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>62</td>
+                                        <td>4</td>
+                                        <td><b>93.9%</b></td>
+                                        <td>65</td>
+                                        <td>1</td>
+                                        <td><b>98.5%</b></td>
+                                    </tr>
+                                    <tr class="sum-row">
+                                        <th scope="row">합계</th>
+                                        <td>973</td>
+                                        <td>0</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>964</td>
+                                        <td>9</td>
+                                        <td><b>99.1%</b></td>
+                                        <td>973</td>
+                                        <td>0</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>833</td>
+                                        <td>140</td>
+                                        <td><b>85.6%</b></td>
+                                        <td>911</td>
+                                        <td>62</td>
+                                        <td><b>93.6%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">진척률</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>99.6%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>98.6%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>98.9%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>57.6%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>90.9%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">개선율</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-green"><b>+0.4%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-green"><b>+0.5%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-green"><b>+1.1%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>-11.8%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-green"><b>+2.7%</b></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="report-section">
+                        <div class="section-title">
+                            <h3>H1 TAG 개수 현황</h3>
+                            <span>H1은 페이지당 1개</span>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table detail-table">
+                                <caption>H1 TAG 개수 현황</caption>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">Country</th>
+                                        <th colspan="8">H1 Tag 개수 현황 (H1Tag는 1개여야 함)</th>
+                                        <th colspan="2">정상여부</th>
+                                        <th colspan="2">전체 URL</th>
+                                    </tr>
+                                    <tr class="table-head-sub">
+                                        <th>0개</th>
+                                        <th>1개</th>
+                                        <th>2개</th>
+                                        <th>3개</th>
+                                        <th>4개</th>
+                                        <th>5개</th>
+                                        <th>6개</th>
+                                        <th>10개</th>
+                                        <th>비율</th>
+                                        <th>전체</th>
+                                        <th>전체</th>
+                                        <th>필요</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">AP</th>
+                                        <td>-</td>
+                                        <td>155</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>155</td>
+                                        <td>155</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">DG</th>
+                                        <td>2</td>
+                                        <td>237</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><b>98.3%</b></td>
+                                        <td>241</td>
+                                        <td>241</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">MX</th>
+                                        <td>-</td>
+                                        <td>199</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>4</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><b>98.0%</b></td>
+                                        <td>203</td>
+                                        <td>203</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">UK</th>
+                                        <td>-</td>
+                                        <td>308</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>308</td>
+                                        <td>308</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">US</th>
+                                        <td>-</td>
+                                        <td>66</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><b>100.0%</b></td>
+                                        <td>66</td>
+                                        <td>66</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr class="sum-row">
+                                        <th scope="row">합계</th>
+                                        <td>2</td>
+                                        <td>965</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>4</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><b>99.2%</b></td>
+                                        <td>973</td>
+                                        <td>973</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">진척률</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>92.0%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">개선율</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-green"><b>+7.1%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="report-section">
+                        <div class="section-title">
+                            <h3>HEADING TAG 분포 (H2 ~ H6)</h3>
+                            <span>전체 / 공백 / 중복</span>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table detail-table">
+                                <caption>HEADING TAG 분포</caption>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">Country</th>
+                                        <th colspan="3">H2 Tag</th>
+                                        <th colspan="3">H3 Tag</th>
+                                        <th colspan="3">H4 Tag</th>
+                                        <th colspan="3">H5 Tag</th>
+                                        <th colspan="3">H6 Tag</th>
+                                    </tr>
+                                    <tr class="table-head-sub">
+                                        <th>전체</th>
+                                        <th>공백</th>
+                                        <th>중복</th>
+                                        <th>전체</th>
+                                        <th>공백</th>
+                                        <th>중복</th>
+                                        <th>전체</th>
+                                        <th>공백</th>
+                                        <th>중복</th>
+                                        <th>전체</th>
+                                        <th>공백</th>
+                                        <th>중복</th>
+                                        <th>전체</th>
+                                        <th>공백</th>
+                                        <th>중복</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">AP</th>
+                                        <td>4728</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>3748</td>
+                                        <td>14</td>
+                                        <td>1079</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">DG</th>
+                                        <td>9708</td>
+                                        <td>150</td>
+                                        <td>2357</td>
+                                        <td>7950</td>
+                                        <td>121</td>
+                                        <td>1234</td>
+                                        <td>234</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">MX</th>
+                                        <td>6173</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>5508</td>
+                                        <td>3</td>
+                                        <td>1550</td>
+                                        <td>196</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">UK</th>
+                                        <td>12704</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>10786</td>
+                                        <td>250</td>
+                                        <td>4238</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">US</th>
+                                        <td>690</td>
+                                        <td>36</td>
+                                        <td>-</td>
+                                        <td>453</td>
+                                        <td>-</td>
+                                        <td>59</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr class="sum-row">
+                                        <th scope="row">합계</th>
+                                        <td>34049</td>
+                                        <td>191</td>
+                                        <td>2357</td>
+                                        <td>28682</td>
+                                        <td>388</td>
+                                        <td>9677</td>
+                                        <td>489</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="report-section">
+                        <div class="section-title">
+                            <h3>구조화 데이터 (SCHEMA)</h3>
+                            <span>FAQPage · Article</span>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table detail-table">
+                                <caption>구조화 데이터 현황</caption>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">Country</th>
+                                        <th colspan="4">FAQPage Schema</th>
+                                        <th colspan="4">Article Schema</th>
+                                    </tr>
+                                    <tr class="table-head-sub">
+                                        <th>적용</th>
+                                        <th>미적용</th>
+                                        <th>대상아님</th>
+                                        <th>진척률</th>
+                                        <th>적용</th>
+                                        <th>미적용</th>
+                                        <th>대상아님</th>
+                                        <th>진척률</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">AP</th>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td>148</td>
+                                        <td><b>57.1%</b></td>
+                                        <td>1</td>
+                                        <td>3</td>
+                                        <td>151</td>
+                                        <td><b>25.0%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">DG</th>
+                                        <td>-</td>
+                                        <td>4</td>
+                                        <td>234</td>
+                                        <td><b>0.0%</b></td>
+                                        <td>-</td>
+                                        <td>4</td>
+                                        <td>237</td>
+                                        <td><b>0.0%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">MX</th>
+                                        <td>-</td>
+                                        <td>4</td>
+                                        <td>237</td>
+                                        <td><b>0.0%</b></td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">UK</th>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td>196</td>
+                                        <td><b>57.1%</b></td>
+                                        <td>1</td>
+                                        <td>3</td>
+                                        <td>304</td>
+                                        <td><b>25.0%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">US</th>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td>304</td>
+                                        <td><b>25.0%</b></td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr class="sum-row">
+                                        <th scope="row">합계</th>
+                                        <td>15</td>
+                                        <td>20</td>
+                                        <td>938</td>
+                                        <td><b>42.9%</b></td>
+                                        <td>3</td>
+                                        <td>17</td>
+                                        <td>953</td>
+                                        <td><b>15.0%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">진척률</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>57.6%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-red"><b>21.7%</b></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">개선율</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-green"><b>+14.8%</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="txt-green"><b>+8.0%</b></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-dim" aria-hidden="true"></div>
+    <section class="audit-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <div class="modal-inner">
+            <h2 class="modal-title" id="modalTitle">운영 진단</h2>
+            <p class="modal-desc">진단 파일을 업로드하세요.</p>
+
+            <div class="modal-file-wrap">
+                <div class="modal-file is-base">
+                    <div class="file-info">
+                        <span class="file-icon" aria-hidden="true">Xlsx</span>
+                        <div class="file-text">
+                            <strong>기준 파일</strong>
+                            <span>YYYY년 MM월 Monthly Audit 제품A_20260508.Xlsx</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-file modal-upload" data-upload="modal">
+                    <div class="upload-box" tabindex="0" role="button" aria-label="진단 엑셀 파일 업로드 영역">
+                        <div class="upload-info">
+                            <span class="file-icon" aria-hidden="true">Xlsx</span>
+                            <div class="upload-text">
+                                <strong>진단 파일</strong>
+                                <span class="modal-file-name">진단파일을 업로드 하세요</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-line upload-trigger">파일선택</button>
+                        <input type="file" class="upload-input" accept=".xlsx,.xls" aria-label="진단 엑셀 파일 선택">
+                    </div>
+                    <!-- <p class="upload-msg" aria-live="polite"></p> -->
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-line close-modal">취소</button>
+                <button type="button" class="btn btn-dark modal-confirm" disabled>확인</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/js/common.js"></script>
 </body>
+
 </html>
