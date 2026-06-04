@@ -159,7 +159,8 @@
 
         closeSelect();
 
-        $list.css("max-height", visibleCount * itemHeight + "px");
+        // border를 고려해 여유 높이 2px 추가
+        $list.css("max-height", visibleCount * itemHeight + 2 + "px");
         $select.addClass("is-open");
         $select.find(".select-btn").attr("aria-expanded", "true");
         $list.stop(true, true).slideDown(160);
